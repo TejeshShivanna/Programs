@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class Programs {
+public class LinkedlistPrograms {
     private ListNode head;
 
     public ListNode getHead(){

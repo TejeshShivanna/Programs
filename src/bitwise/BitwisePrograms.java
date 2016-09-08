@@ -1,7 +1,11 @@
-package PACKAGE_NAME;
+package bitwise;
 
-/**
- * Created by tshivanna on 9/6/16.
- */
-public class bitwise {
+public class BitwisePrograms {
+    public int countones(int num){
+        int count;
+        for(count=0; num!=0; count++){
+            num = num & (num-1);
+        }
+        return count;
+    }
 }

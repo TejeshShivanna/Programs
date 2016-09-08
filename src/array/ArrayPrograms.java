@@ -1,6 +1,6 @@
 package array;
 
-public class Programs {
+public class ArrayPrograms {
 
     public int firstMissingPositive(int[] nums) {
         if(nums == null) return Integer.MAX_VALUE;
