@@ -241,11 +241,44 @@ public class LinkedlistPrograms {
         }
         else{
             prev.next = null;
-            slow = slow.next;
+            slow = slow.next;https://leetcode.com/problems/partition-list/
         }
 
         slow = reverseList(slow);
 
         return compareLists(head, slow);
+    }
+    
+    // https://leetcode.com/problems/partition-list/
+    public ListNode partition(ListNode head, int x) {
+        if(head==null || head.next==null) return head;
+        ListNode dhead = new ListNode(-1);
+        dhead.next = head;
+        
+        ListNode prev = dhead;
+        ListNode curr = head;
+        
+        ListNode shead = new ListNode(-1);
+        shead.next = null;
+        
+        ListNode temp = shead;
+        
+        while(curr!=null){
+            if(curr.val>=x){
+                temp.next = new ListNode(curr.val);
+                temp = temp.next;
+                temp.next = null;
+                
+                curr = curr.next;
+                prev.next = curr;
+            }
+            else{
+                prev = curr;
+                curr = curr.next;
+            }
+        }
+        
+        prev.next = shead.next;
+        return dhead.next;
     }
 }
