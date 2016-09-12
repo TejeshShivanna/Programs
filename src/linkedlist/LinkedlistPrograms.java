@@ -210,4 +210,42 @@ public class LinkedlistPrograms {
         slow.next = slow.next.next;
         return head;
     }
+    
+    public boolean compareLists(ListNode a, ListNode b){
+        if(a==null && b==null) return true;
+        if(a==null) return false;
+        if(b==null) return false;
+
+        while(a!=null && b!=null){
+            if(a.val != b.val) return false;
+            a = a.next;
+            b = b.next;
+        }
+        if(a==null && b==null) return true;
+        return false;
+    }
+
+    public boolean isPalindrome(ListNode head) {
+        if(head==null || head.next==null) return true;
+
+        ListNode prev = null, slow = head, fast = head;
+
+        while(fast!=null && fast.next!=null){
+            fast = fast.next.next;
+            prev = slow;
+            slow = slow.next;
+        }
+
+        if(fast==null){
+            prev.next = null;
+        }
+        else{
+            prev.next = null;
+            slow = slow.next;
+        }
+
+        slow = reverseList(slow);
+
+        return compareLists(head, slow);
+    }
 }
