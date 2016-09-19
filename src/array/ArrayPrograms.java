@@ -1,5 +1,7 @@
 package array;
 
+import java.util.HashMap;
+
 public class ArrayPrograms {
 
     public int firstMissingPositive(int[] nums) {
@@ -55,5 +57,22 @@ public class ArrayPrograms {
             }
         }
         return i;
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        int[] ans = new int[2];
+        if(nums == null || nums.length==0) return ans;
+        HashMap<Integer, Integer> hmap = new HashMap<>();
+        for(int i=0; i<nums.length; i++){
+            if(hmap.containsKey(target-nums[i])){
+                ans[0] = hmap.get(target-nums[i]);
+                ans[1] = i;
+                break;
+            }
+            else{
+                hmap.put(nums[i], i);
+            }
+        }
+        return ans;
     }
 }
