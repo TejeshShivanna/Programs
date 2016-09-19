@@ -40,4 +40,22 @@ public class NumbersPrograms {
 
         return (num == 1)? 1 : 0;
     }
+
+    public int reverse(int x) {
+        if(x>-10 && x<10) return x;
+        int res = 1;
+        if(x<0){
+            res = -1;
+            x = res*x;
+        }
+        int sum=0,r=0;
+        while(x>0){
+            r = x%10;
+            sum = sum*10+r;
+            x=x/10;
+        }
+
+        return res==1?sum:0-sum;
+
+    }
 }
