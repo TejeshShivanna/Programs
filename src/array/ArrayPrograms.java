@@ -1,6 +1,6 @@
 package array;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class ArrayPrograms {
 
@@ -74,5 +74,45 @@ public class ArrayPrograms {
             }
         }
         return ans;
+    }
+
+    public class Numcount{
+        int num;
+        int count;
+        public Numcount(int n, int c){
+            this.num = n;
+            this.count = c;
+        }
+    }
+
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        if(nums==null || nums.length==0) return new ArrayList<Integer>();
+
+        HashMap<Integer, Integer> hmap = new HashMap<>();
+        for(int num: nums){
+            if(!hmap.containsKey(num)){
+                hmap.put(num, 1);
+            }
+            else{
+                hmap.put(num, hmap.get(num) + 1);
+            }
+        }
+
+        PriorityQueue<Numcount> queue = new PriorityQueue<>((a, b) -> a.count - b.count);
+
+        for(Map.Entry<Integer, Integer> item: hmap.entrySet()){
+            queue.add(new Numcount(item.getKey(), item.getValue()));
+
+            if(queue.size()>k){
+                queue.remove();
+            }
+        }
+
+        List<Integer> result = new ArrayList<>();
+        for(int i=0;i<k;i++){
+            result.add(queue.poll().num);
+        }
+        Collections.reverse(result);
+        return result;
     }
 }
